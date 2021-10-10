@@ -6,6 +6,7 @@
 #include "memlayout.h"
 #include "spinlock.h"
 #include "proc.h"
+#include "sysinfo.h"
 
 uint64
 sys_exit(void)
@@ -95,3 +96,19 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+uint64
+sys_trace(void)
+{
+	int trace_mask;
+
+	argint(0, &trace_mask);
+	if (trace_mask < 0)
+		 return -1;
+
+	struct proc *p = myproc();
+	p->trace_mask = trace_mask;
+
+	return 0;
+}
+			
