@@ -8,6 +8,9 @@
 #include "proc.h"
 #include "sysinfo.h"
 
+extern uint64 nproc();
+extern uint64 nfree();
+
 uint64
 sys_exit(void)
 {
@@ -111,4 +114,21 @@ sys_trace(void)
 
 	return 0;
 }
-			
+
+uint64
+sys_sysinfo(void)
+{
+	uint64 addr;
+	struct sysinfo info;
+   	struct proc *p = myproc();
+
+	argaddr(0, &addr);
+
+	info.freemem = nfree();
+	info.nproc = nproc();
+
+	if (copyout(p->pagetable, addr, (char *)&info, sizeof(info)) < 0)
+		return -1;
+
+	return 0;
+}
