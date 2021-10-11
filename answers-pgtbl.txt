@@ -1,3 +1,16 @@
+1.uloha
 tie uzivatelske volania, ktore zdielaju data medzi jadrom a uzivatelskym prostredim.
 su to napr. gets, atoi, stat
 lebo je mozne eliminovat prechody do jadra, tym ze si zdielaju informacie - je to rychlejsie
+
+
+2.uloha
+moze pomoct pri vizualizacii stranok, funkcia vracia riadky pre kazde PTE odsadene .. - podla hlbky v strome,
+tieto riadky obsahuju index zaznamu, bity pte a fyzicku adresu z pte,
+nevypisuje neplatne zaznamy.
+
+stranka 0 - obsahuje programovy kod
+stranka 2 - obsahuje guard page, safe zona
+tretia stranka od konca je usyscall, zabezpeci bezpecny prechod do jadra a spat
+ked proces bezi v uzivatelskom mode, moze precitat a zapisat pamat mapovanu strankou 1
+
