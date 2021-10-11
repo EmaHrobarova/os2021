@@ -1,0 +1,3 @@
+tie uzivatelske volania, ktore zdielaju data medzi jadrom a uzivatelskym prostredim.
+su to napr. gets, atoi, stat
+lebo je mozne eliminovat prechody do jadra, tym ze si zdielaju informacie - je to rychlejsie
