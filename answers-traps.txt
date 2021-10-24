@@ -1,0 +1,20 @@
+1.
+Argumenty funkcii obsahuju registre od x10 az po x17, alebo teda a0 az a7.
+Hodnotu 13 som nasla v a2.
+
+2. 
+V maine je funkcia f() volana vo vnutri funkcie printf("%d %d\n", f(8)+1, 13), kde sa potom priamo vo funkcii f() zavolana aj funkcia g().
+
+3.
+Funkcia sa nachadza na adrese 0000000000000630.
+
+4.
+V registri ra je hodnota 1536.
+
+5.
+Vypis bol "He110 World".
+Big endian by potreboval k premennej i priradenu hodnotu 726C6400. Takisto by bolo potrebne zmenit aj hodnotu 57616.
+
+6. 
+Kedze tam nieje definovana ziadna integer hodnota, kt. by sa vypisala, takze kompilator zoberie najvyssiu hodnoty zo 
+stacku.
