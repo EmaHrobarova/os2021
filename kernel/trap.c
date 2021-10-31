@@ -65,9 +65,12 @@ usertrap(void)
     intr_on();
 
     syscall();
-  } else if((which_dev = devintr()) != 0){
+    } else if(r_scause() == 15){    //outage of page
+	    if(uvmcow(p->pagetable, r_stval()) != 0)
+      p->killed = 1;
+    } else if((which_dev = devintr()) != 0){
     // ok
-  } else {
+    } else {
     printf("usertrap(): unexpected scause %p pid=%d\n", r_scause(), p->pid);
     printf("            sepc=%p stval=%p\n", r_sepc(), r_stval());
     p->killed = 1;
@@ -85,7 +88,7 @@ usertrap(void)
 
 //
 // return to user space
-//
+// 
 void
 usertrapret(void)
 {
