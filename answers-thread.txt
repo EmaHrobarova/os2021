@@ -1,0 +1,1 @@
+vlakno jadra dokaze naraz komunikovat iba s jednym vlaknom uzivatelskeho programu, takze moze nastat tzv. upchatie, pretoze sa caka na vykonanie nejakeho systemoveho volania
