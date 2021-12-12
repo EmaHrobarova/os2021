@@ -65,6 +65,12 @@ usertrap(void)
     intr_on();
 
     syscall();
+
+  } else if(r_scause() == 15 || r_scause() == 13){
+	  struct vma *vma = search_vma(myproc(), r_stval());
+	  if (vma == 0)
+		  exit(-1);
+
   } else if((which_dev = devintr()) != 0){
     // ok
   } else {

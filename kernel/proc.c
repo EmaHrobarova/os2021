@@ -295,7 +295,8 @@ fork(void)
   // Cause fork to return 0 in the child.
   np->trapframe->a0 = 0;
 
-  // increment reference counts on open file descriptors.
+  // increment ref
+  // erence counts on open file descriptors.
   for(i = 0; i < NOFILE; i++)
     if(p->ofile[i])
       np->ofile[i] = filedup(p->ofile[i]);
@@ -313,6 +314,8 @@ fork(void)
 
   acquire(&np->lock);
   np->state = RUNNABLE;
+
+  
   release(&np->lock);
 
   return pid;
@@ -654,3 +657,4 @@ procdump(void)
     printf("\n");
   }
 }
+
